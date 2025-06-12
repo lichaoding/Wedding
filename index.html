@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>李朝定 & 陈姗 - 婚礼邀请</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#F8BBD0', // 柔和粉色
+            secondary: '#E0F7FA', // 淡蓝色
+            accent: '#FFF9C4', // 香槟色
+            gold: '#D4AF37', // 金色
+            ivory: '#FFF8E1', // 象牙白
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['"Playfair Display"', 'serif'],
+          },
+        },
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .text-shadow {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+      }
+      .text-shadow-sm {
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+      }
+      .animate-float {
+        animation: float 6s ease-in-out infinite;
+      }
+      .animate-fade-in {
+        animation: fadeIn 1.5s ease-in-out forwards;
+      }
+      .animate-slide-up {
+        animation: slideUp 1s ease-out forwards;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes slideUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body class="bg-ivory text-gray-800 overflow-x-hidden scrollbar-hide">
+  <!-- 顶部导航 -->
+  <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 ease-in-out">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <a href="#hero" class="text-2xl md:text-3xl font-display font-bold text-primary hover:text-gold transition-colors duration-300">李 & 张</a>
+      <div class="hidden md:flex space-x-8">
+        <a href="#about" class="text-gray-700 hover:text-primary transition-colors duration-300 font-medium">我们的故事</a>
+        <a href="#wedding" class="text-gray-700 hover:text-primary transition-colors duration-300 font-medium">婚礼安排</a>
+        <a href="#gallery" class="text-gray-700 hover:text-primary transition-colors duration-300 font-medium">照片墙</a>
+        <a href="#rsvp" class="text-gray-700 hover:text-primary transition-colors duration-300 font-medium">确认出席</a>
+      </div>
+      <button class="md:hidden text-gray-700 focus:outline-none" id="menu-toggle">
+        <i class="fa fa-bars text-2xl"></i>
+      </button>
+    </div>
+    <!-- 移动端菜单 -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-md absolute w-full">
+      <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
+        <a href="#about" class="text-gray-700 hover:text-primary transition-colors duration-300 font-medium py-2">我们的故事</a>
+        <a href="#wedding" class="text-gray-700 hover:text-primary transition-colors duration-300 font-medium py-2">婚礼安排</a>
+        <a href="#gallery" class="text-gray-700 hover:text-primary transition-colors duration-300 font-medium py-2">照片墙</a>
+        <a href="#rsvp" class="text-gray-700 hover:text-primary transition-colors duration-300 font-medium py-2">确认出席</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 英雄区域 -->
+  <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <div class="absolute inset-0 bg-gradient-to-r from-pink-50 to-blue-50 opacity-70"></div>
+      <img src="https://picsum.photos/id/146/1920/1080" alt="婚礼背景图" class="w-full h-full object-cover object-center">
+    </div>
+    <div class="container mx-auto px-4 z-10 text-center">
+      <div class="animate-fade-in opacity-0" style="animation-delay: 0.3s;">
+        <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-display text-gray-700 mb-4">我们将在</h2>
+        <div class="flex justify-center items-center space-x-4 mb-8">
+          <div class="bg-white/80 backdrop-blur-sm rounded-lg p-4 shadow-lg">
+            <div id="days" class="text-4xl md:text-5xl font-bold text-primary">00</div>
+            <div class="text-sm text-gray-600">天</div>
+          </div>
+          <div class="bg-white/80 backdrop-blur-sm rounded-lg p-4 shadow-lg">
+            <div id="hours" class="text-4xl md:text-5xl font-bold text-primary">00</div>
+            <div class="text-sm text-gray-600">时</div>
+          </div>
+          <div class="bg-white/80 backdrop-blur-sm rounded-lg p-4 shadow-lg">
+            <div id="minutes" class="text-4xl md:text-5xl font-bold text-primary">00</div>
+            <div class="text-sm text-gray-600">分</div>
+          </div>
+          <div class="bg-white/80 backdrop-blur-sm rounded-lg p-4 shadow-lg">
+            <div id="seconds" class="text-4xl md:text-5xl font-bold text-primary">00</div>
+            <div class="text-sm text-gray-600">秒</div>
+          </div>
+        </div>
+      </div>
+      <div class="animate-fade-in opacity-0" style="animation-delay: 0.6s;">
+        <h1 class="text-[clamp(2.5rem,6vw,4.5rem)] font-display font-bold text-white text-shadow mb-6">李朝定 & 陈珊</h1>
+        <div class="flex justify-center items-center mb-6">
+          <div class="w-16 h-px bg-white/60"></div>
+          <i class="fa fa-heart text-primary mx-4 text-2xl"></i>
+          <div class="w-16 h-px bg-white/60"></div>
+        </div>
+        <p class="text-[clamp(1.2rem,3vw,1.8rem)] text-white text-shadow-sm mb-8">2025年10月1日 · 安康</p>
+        <a href="#rsvp" class="inline-block bg-primary hover:bg-pink-400 text-white font-medium py-3 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1">
+          确认出席
+        </a>
+      </div>
+    </div>
+    <div class="absolute bottom-10 left-0 right-0 flex justify-center animate-bounce">
+      <a href="#about" class="text-white/80 hover:text-white transition-colors">
+        <i class="fa fa-angle-down text-3xl"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- 我们的故事 -->
+  <section id="about" class="py-24 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16 animate-fade-in">
+        <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-display font-bold text-gray-800 mb-4">我们的故事</h2>
+        <div class="flex justify-center items-center">
+          <div class="w-16 h-px bg-primary"></div>
+          <i class="fa fa-heart text-primary mx-4"></i>
+          <div class="w-16 h-px bg-primary"></div>
+        </div>
+      </div>
+
+      <div class="max-w-4xl mx-auto">
+        <div class="relative">
+          <!-- 时间线 -->
+          <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-primary/30 z-0"></div>
+
+          <!-- 相遇 -->
+          <div class="relative z-10 mb-20">
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+              <div class="md:text-right md:pr-12 opacity-0" data-animate="slide-up">
+                <span class="inline-block bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-medium mb-4">2018年3月</span>
+                <h3 class="text-2xl font-display font-bold text-gray-800 mb-4">初次相遇</h3>
+                <p class="text-gray-600">在朋友的生日聚会上，我们第一次见面。当时的我没想到，这个笑容灿烂的女孩会成为我生命中最重要的人。</p>
+              </div>
+              <div class="md:pl-12 opacity-0" data-animate="slide-up" style="animation-delay: 0.2s;">
+                <img src="https://picsum.photos/id/370/600/400" alt="初次相遇" class="rounded-lg shadow-xl w-full h-auto object-cover hover:scale-105 transition-transform duration-500">
+                <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-primary rounded-full border-4 border-white shadow-md"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 约会 -->
+          <div class="relative z-10 mb-20">
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+              <div class="md:order-2 md:pl-12 opacity-0" data-animate="slide-up">
+                <span class="inline-block bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-medium mb-4">2018年5月</span>
+                <h3 class="text-2xl font-display font-bold text-gray-800 mb-4">第一次约会</h3>
+                <p class="text-gray-600">我们一起去了那家温馨的咖啡馆，聊了整整一个下午。从那刻起，我知道我们的故事才刚刚开始。</p>
+              </div>
+              <div class="md:order-1 md:text-right md:pr-12 opacity-0" data-animate="slide-up" style="animation-delay: 0.2s;">
+                <img src="https://picsum.photos/id/325/600/400" alt="第一次约会" class="rounded-lg shadow-xl w-full h-auto object-cover hover:scale-105 transition-transform duration-500">
+                <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-primary rounded-full border-4 border-white shadow-md"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 在一起 -->
+          <div class="relative z-10 mb-20">
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+              <div class="md:text-right md:pr-12 opacity-0" data-animate="slide-up">
+                <span class="inline-block bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-medium mb-4">2018年7月</span>
+                <h3 class="text-2xl font-display font-bold text-gray-800 mb-4">正式在一起</h3>
+                <p class="text-gray-600">在那个繁星点点的夜晚，我鼓起勇气向你表白。你点头答应的那一刻，我的世界变得更加美好。</p>
+              </div>
+              <div class="md:pl-12 opacity-0" data-animate="slide-up" style="animation-delay: 0.2s;">
+                <img src="https://picsum.photos/id/1035/600/400" alt="正式在一起" class="rounded-lg shadow-xl w-full h-auto object-cover hover:scale-105 transition-transform duration-500">
+                <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-primary rounded-full border-4 border-white shadow-md"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 求婚 -->
+          <div class="relative z-10">
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+              <div class="md:order-2 md:pl-12 opacity-0" data-animate="slide-up">
+                <span class="inline-block bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-medium mb-4">2024年12月</span>
+                <h3 class="text-2xl font-display font-bold text-gray-800 mb-4">求婚</h3>
+                <p class="text-gray-600">在我们相识的地方，我精心准备了一场求婚。当我单膝跪地，你眼中闪烁的泪光和点头的瞬间，是我这辈子最难忘的时刻。</p>
+              </div>
+              <div class="md:order-1 md:text-right md:pr-12 opacity-0" data-animate="slide-up" style="animation-delay: 0.2s;">
+                <img src="https://picsum.photos/id/1048/600/400" alt="求婚" class="rounded-lg shadow-xl w-full h-auto object-cover hover:scale-105 transition-transform duration-500">
+                <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-primary rounded-full border-4 border-white shadow-md"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 婚礼安排 -->
+  <section id="wedding" class="py-24 bg-gradient-to-b from-white to-ivory">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16 animate-fade-in">
+        <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-display font-bold text-gray-800 mb-4">婚礼安排</h2>
+        <div class="flex justify-center items-center">
+          <div class="w-16 h-px bg-primary"></div>
+          <i class="fa fa-heart text-primary mx-4"></i>
+          <div class="w-16 h-px bg-primary"></div>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+        <!-- 仪式 -->
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl opacity-0" data-animate="slide-up">
+          <div class="h-64 overflow-hidden">
+            <img src="https://picsum.photos/id/1060/800/600" alt="婚礼仪式" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700">
+          </div>
+          <div class="p-8">
+            <div class="flex justify-center mb-4">
+              <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                <i class="fa fa-church text-primary text-xl"></i>
+              </div>
+            </div>
+            <h3 class="text-2xl font-display font-bold text-center text-gray-800 mb-2">婚礼仪式</h3>
+            <div class="flex justify-center items-center mb-4">
+              <div class="w-10 h-px bg-primary"></div>
+            </div>
+            <p class="text-center text-gray-600 mb-6">让我们在亲朋好友的见证下，许下一生的承诺</p>
+            <div class="flex items-center text-gray-700 mb-3">
+              <i class="fa fa-calendar text-primary mr-3"></i>
+              <span>2025年10月1日 上午10:30</span>
+            </div>
+            <div class="flex items-center text-gray-700 mb-6">
+              <i class="fa fa-map-marker text-primary mr-3"></i>
+              <span>安康某某某</span>
+            </div>
+            <div class="text-center">
+              <a href="https://maps.baidu.com/search/安康某某某" target="_blank" class="inline-block text-primary hover:text-pink-600 font-medium transition-colors duration-300">
+                <i class="fa fa-directions mr-2"></i>获取路线
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 婚宴 -->
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl opacity-0" data-animate="slide-up" style="animation-delay: 0.2s;">
+          <div class="h-64 overflow-hidden">
+            <img src="https://picsum.photos/id/292/800/600" alt="婚宴" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700">
+          </div>
+          <div class="p-8">
+            <div class="flex justify-center mb-4">
+              <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                <i class="fa fa-glass text-primary text-xl"></i>
+              </div>
+            </div>
+            <h3 class="text-2xl font-display font-bold text-center text-gray-800 mb-2">婚宴</h3>
+            <div class="flex justify-center items-center mb-4">
+              <div class="w-10 h-px bg-primary"></div>
+            </div>
+            <p class="text-center text-gray-600 mb-6">让我们共同举杯，庆祝这一幸福时刻</p>
+            <div class="flex items-center text-gray-700 mb-3">
+              <i class="fa fa-calendar text-primary mr-3"></i>
+              <span>2025年10月1日 下午18:00</span>
+            </div>
+            <div class="flex items-center text-gray-700 mb-6">
+              <i class="fa fa-map-marker text-primary mr-3"></i>
+              <span>安康某某某</span>
+            </div>
+            <div class="text-center">
+              <a href="https://maps.baidu.com/search/安康某某某" target="_blank" class="inline-block text-primary hover:text-pink-600 font-medium transition-colors duration-300">
+                <i class="fa fa-directions mr-2"></i>获取路线
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 时间表 -->
+      <div class="mt-20 max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-8 opacity-0" data-animate="slide-up">
+        <h3 class="text-2xl font-display font-bold text-center text-gray-800 mb-8">当日时间表</h3>
+        <div class="space-y-6">
+          <div class="flex">
+            <div class="flex-shrink-0 w-24 text-right pr-4">
+              <span class="text-primary font-medium">10:00</span>
+            </div>
+            <div class="relative flex-grow">
+              <div class="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-full bg-primary/20"></div>
+              <div class="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-primary"></div>
+              <div class="ml-8">
+                <h4 class="font-bold text-gray-800">宾客入场</h4>
+                <p class="text-gray-600">请各位来宾在此之前到达婚礼现场</p>
+              </div>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="flex-shrink-0 w-24 text-right pr-4">
+              <span class="text-primary font-medium">10:30</span>
+            </div>
+            <div class="relative flex-grow">
+              <div class="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-full bg-primary/20"></div>
+              <div class="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-primary"></div>
+              <div class="ml-8">
+                <h4 class="font-bold text-gray-800">婚礼仪式开始</h4>
+                <p class="text-gray-600">见证新人许下一生的承诺</p>
+              </div>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="flex-shrink-0 w-24 text-right pr-4">
+              <span class="text-primary font-medium">12:00</span>
+            </div>
+            <div class="relative flex-grow">
+              <div class="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-full bg-primary/20"></div>
+              <div class="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-primary"></div>
+              <div class="ml-8">
+                <h4 class="font-bold text-gray-800">合影时间</h4>
+                <p class="text-gray-600">新人与亲朋好友合影留念</p>
+              </div>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="flex-shrink-0 w-24 text-right pr-4">
+              <span class="text-primary font-medium">18:00</span>
+            </div>
+            <div class="relative flex-grow">
+              <div class="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-full bg-primary/20"></div>
+              <div class="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-primary"></div>
+              <div class="ml-8">
+                <h4 class="font-bold text-gray-800">婚宴开始</h4>
+                <p class="text-gray-600">品尝美味佳肴，共同举杯庆祝</p>
+              </div>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="flex-shrink-0 w-24 text-right pr-4">
+              <span class="text-primary font-medium">20:30</span>
+            </div>
+            <div class="relative flex-grow">
+              <div class="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-full bg-primary/20"></div>
+              <div class="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-primary"></div>
+              <div class="ml-8">
+                <h4 class="font-bold text-gray-800">婚礼结束</h4>
+                <p class="text-gray-600">感谢各位来宾的见证与祝福</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 照片墙 -->
+  <section id="gallery" class="py-24 bg-ivory">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16 animate-fade-in">
+        <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-display font-bold text-gray-800 mb-4">爱情剪影</h2>
+        <div class="flex justify-center items-center">
+          <div class="w-16 h-px bg-primary"></div>
+          <i class="fa fa-heart text-primary mx-4"></i>
+          <div class="w-16 h-px bg-primary"></div>
+        </div>
+        <p class="mt-6 text-gray-600 max-w-2xl mx-auto">记录我们爱情中的点点滴滴，这些回忆是我们最珍贵的宝藏</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 opacity-0" data-animate="slide-up">
+        <div class="overflow-hidden rounded-lg shadow-lg group">
+          <img src="https://picsum.photos/id/1062/600/600" alt="爱情剪影1" class="w-full h-64 object-cover object-center group-hover:scale-110 transition-transform duration-500">
+        </div>
+        <div class="overflow-hidden rounded-lg shadow-lg group">
+          <img src="https://picsum.photos/id/1067/600/600" alt="爱情剪影2" class="w-full h-64 object-cover object-center group-hover:scale-110 transition-transform duration-500">
+        </div>
+        <div class="overflow-hidden rounded-lg shadow-lg group">
+          <img src="https://picsum.photos/id/1069/600/600" alt="爱情剪影3" class="w-full h-64 object-cover object-center group-hover:scale-110 transition-transform duration-500">
+        </div>
+        <div class="overflow-hidden rounded-lg shadow-lg group">
+          <img src="https://picsum.photos/id/1074/600/600" alt="爱情剪影4" class="w-full h-64 object-cover object-center group-hover:scale-110 transition-transform duration-500">
+        </div>
+        <div class="overflow-hidden rounded-lg shadow-lg group">
+          <img src="https://picsum.photos/id/1079/600/600" alt="爱情剪影5" class="w-full h-64 object-cover object-center group-hover:scale-110 transition-transform duration-500">
+        </div>
+        <div class="overflow-hidden rounded-lg shadow-lg group">
+          <img src="https://picsum.photos/id/1082/600/600" alt="爱情剪影6" class="w-full h-64 object-cover object-center group-hover:scale-110 transition-transform duration-500">
+        </div>
+        <div class="overflow-hidden rounded-lg shadow-lg group">
+          <img src="https://picsum.photos/id/1080/600/600" alt="爱情剪影7" class="w-full h-64 object-cover object-center group-hover:scale-110 transition-transform duration-500">
+        </div>
+        <div class="overflow-hidden rounded-lg shadow-lg group">
+          <img src="https://picsum.photos/id/1083/600/600" alt="爱情剪影8" class="w-full h-64 object-cover object-center group-hover:scale-110 transition-transform duration-500">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 确认出席 -->
+  <section id="rsvp" class="py-24 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16 animate-fade-in">
+        <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-display font-bold text-gray-800 mb-4">期待您的到来</h2>
+        <div class="flex justify-center items-center">
+          <div class="w-16 h-px bg-primary"></div>
+          <i class="fa fa-heart text-primary mx-4"></i>
+          <div class="w-16 h-px bg-primary"></div>
+        </div>
+        <p class="mt-6 text-gray-600 max-w-2xl mx-auto">您的祝福与见证对我们至关重要，请在此确认您是否能出席我们的婚礼</p>
+      </div>
+
+      <div class="max-w-2xl mx-auto bg-white rounded-2xl shadow-xl p-8 md:p-12 opacity-0" data-animate="slide-up">
+        <form id="rsvp-form" class="space-y-6">
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label for="name" class="block text-gray-700 font-medium mb-2">您的姓名</label>
+              <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors duration-300" placeholder="请输入您的姓名" required>
+            </div>
+            <div>
+              <label for="guests" class="block text-gray-700 font-medium mb-2">随行人数</label>
+              <select id="guests" name="guests" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors duration-300" required>
+                <option value="">请选择</option>
+                <option value="0">仅我一人</option>
+                <option value="1">1位</option>
+                <option value="2">2位</option>
+                <option value="3">3位</option>
+                <option value="4+">4位及以上</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label for="attendance" class="block text-gray-700 font-medium mb-2">是否出席</label>
+            <div class="flex space-x-4">
+              <label class="inline-flex items-center">
+                <input type="radio" name="attendance" value="yes" class="form-radio text-primary focus:ring-primary" required>
+                <span class="ml-2 text-gray-700">肯定出席</span>
+              </label>
+              <label class="inline-flex items-center">
+                <input type="radio" name="attendance" value="no" class="form-radio text-primary focus:ring-primary">
+                <span class="ml-2 text-gray-700">无法出席</span>
+              </label>
+            </div>
+          </div>
+          <div>
+            <label for="message" class="block text-gray-700 font-medium mb-2">您的祝福</label>
+            <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors duration-300" placeholder="对我们说些祝福的话吧..."></textarea>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="bg-primary hover:bg-pink-500 text-white font-medium py-3 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 w-full md:w-auto">
+              提交确认
+            </button>
+          </div>
+        </form>
+        <div id="rsvp-success" class="hidden mt-8 text-center">
+          <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
+            <i class="fa fa-check text-green-500 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-2">感谢您的确认！</h3>
+          <p class="text-gray-600">我们已收到您的回复，期待在婚礼上与您相见！</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="bg-gray-800 text-white py-16">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl font-display font-bold mb-4">李朝定 & 陈姗</h2>
+        <p class="text-gray-400">2025年10月1日 · 安康</p>
+      </div>
+      <div class="flex justify-center space-x-6 mb-8">
+        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors duration-300">
+          <i class="fa fa-weixin text-white"></i>
+        </a>
+        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors duration-300">
+          <i class="fa fa-weibo text-white"></i>
+        </a>
+        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors duration-300">
+          <i class="fa fa-instagram text-white"></i>
+        </a>
+      </div>
+      <div class="text-center text-gray-400 text-sm">
+        <p>© 2025 李朝定 & 陈姗 婚礼邀请 · 由爱设计</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 返回顶部按钮 -->
+  <button id="back-to-top" class="fixed bottom-8 right-8 bg-primary/80 hover:bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 opacity-0 invisible">
+    <i class="fa fa-arrow-up"></i>
+  </button>
+
+  <script>
+    // 倒计时功能
+    function updateCountdown() {
+      const weddingDate = new Date('2025-10-01T10:30:00').getTime();
+      const now = new Date().getTime();
+      const timeLeft = weddingDate - now;
+
+      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+      document.getElementById('days').innerText = days.toString().padStart(2, '0');
+      document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+      document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
+      document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
+    }
+
+    // 初始更新倒计时
+    updateCountdown();
+    // 每秒更新一次
+    setInterval(updateCountdown, 1000);
+
+    // 导航栏滚动效果
+    window.addEventListener('scroll', function() {
+      const navbar = document.getElementById('navbar');
+      const backToTop = document.getElementById('back-to-top');
+
+      if (window.scrollY > 100) {
+        navbar.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-md');
+        navbar.classList.remove('py-4');
+        navbar.classList.add('py-2');
+        
+        backToTop.classList.remove('opacity-0', 'invisible');
+        backToTop.classList.add('opacity-100', 'visible');
+      } else {
+        navbar.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-md');
+        navbar.classList.remove('py-2');
+        navbar.classList.add('py-4');
+        
+        backToTop.classList.add('opacity-0', 'invisible');
+        backToTop.classList.remove('opacity-100', 'visible');
+      }
+
+      // 滚动动画
+      const elements = document.querySelectorAll('[data-animate]');
+      elements.forEach(element => {
+        const elementPosition = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (elementPosition < windowHeight * 0.85) {
+          element.classList.add(element.dataset.animate);
+          element.classList.remove('opacity-0');
+        }
+      });
+    });
+
+    // 移动端菜单切换
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+      const mobileMenu = document.getElementById('mobile-menu');
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+          
+          // 如果是移动端，点击后关闭菜单
+          const mobileMenu = document.getElementById('mobile-menu');
+          if (!mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+          }
+        }
+      });
+    });
+
+    // 返回顶部按钮
+    document.getElementById('back-to-top').addEventListener('click', function() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // RSVP表单提交
+    document.getElementById('rsvp-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // 模拟表单提交
+      setTimeout(() => {
+        document.getElementById('rsvp-form').classList.add('hidden');
+        document.getElementById('rsvp-success').classList.remove('hidden');
+      }, 1000);
+    });
+  </script>
+</body>
+</html>
+    
